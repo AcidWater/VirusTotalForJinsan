@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
+import App from './main/App';
+import 'leaflet/dist/leaflet.css'
 
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core"
 

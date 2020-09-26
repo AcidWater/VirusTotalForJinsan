@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {font-family: 'Akira'; src: url(./fonts/Akira.otf) format('truetype');}
+@font-face {font-family: 'Akira'; src: url(../fonts/Akira.otf) format('truetype');}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

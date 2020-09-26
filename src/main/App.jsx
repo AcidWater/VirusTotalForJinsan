@@ -1,6 +1,6 @@
 import React from 'react';
 import TopBar from './topBar'
-import Map from './Map'
+import Map from '../map/Map'
 
 function App() {
   return (
