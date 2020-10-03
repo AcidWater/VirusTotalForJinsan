@@ -1,31 +1,62 @@
-//@flow
+import React, { memo } from "react";
 
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'; 
-import L from 'leaflet';
+import {
+  ZoomableGroup,
+  ComposableMap,
+  Geographies,
+  Geography
+} from 'react-simple-maps'
 
-export default class MapAPI extends Component {
-    state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13,
-      }
-    
-      render() {
-        const position = [this.state.lat, this.state.lng];
+const geoUrl =
+  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-        return (
-          <Map center={position} zoom={this.state.zoom}>
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          </Map>
-        )
-      }
+const rounded = num => {
+  if (num > 1000000000) {
+    return Math.round(num / 100000000) / 10 + 'Bn';
+  } else if (num / 1000000) {
+    return Math.round(num / 100000) / 10 + "M";
+  } else {
+    return Math.round(num / 100) / 10 + "K";
+  }
 }
+
+const MapChart = ({ setTooltipContent }) => {
+  return (
+    <>
+      <ComposableMap data-tip="" projectionConfig={{scale: 200}}>
+          <Geographies geography={geoUrl}>
+            {({ geographies }) => 
+              geographies.map(geo => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onMouseEnter={() => {
+                    const { NAME, POP_EST } = geo.properties;
+                    setTooltipContent(`${NAME} - ${rounded(POP_EST)}`);
+                  }}
+                  onMouseLeave={() => {
+                    setTooltipContent("");
+                  }}
+                  style={{
+                    default: {
+                      fill: "#D6D6DA",
+                      outline: "none"
+                    },
+                    hover: {
+                      fill: "#F53",
+                      outline: "none"
+                    },
+                    pressed: {
+                      fill: "#E42",
+                      outline: "none"
+                    }
+                  }}
+                />
+              ))}
+          </Geographies>
+      </ComposableMap>
+    </>
+  )
+}
+
+export default memo(MapChart);
