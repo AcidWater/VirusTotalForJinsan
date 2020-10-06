@@ -8,7 +8,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core"
 
 const theme = createMuiTheme({
     typography: {
-        fontFamily: 'Akira',
+        fontFamily:[  'Roboto', 'Akira', "Ubuntu" ],
     },
 });
 

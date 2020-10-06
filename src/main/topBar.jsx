@@ -2,8 +2,12 @@ import React from 'react'
 import { AppBar, Typography, makeStyles, Toolbar, Box } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
+    mainbar: {
+        position: "fixed"
+    },
     title: {
         flexGrow: 1,
+        fontFamily: 'Akira'
     },
 }));
 
@@ -12,7 +16,7 @@ export default function topBar() {
     const classes = useStyles();
 
     return (
-        <div className="Main">
+        <div className={classes.mainbar}>
             <Box textAlign="center">
                 <AppBar position="static" color="primary">
                     <Toolbar>    
