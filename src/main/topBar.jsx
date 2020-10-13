@@ -21,7 +21,7 @@ export default function topBar() {
                 <AppBar position="static" color="primary">
                     <Toolbar>    
                         <Typography variant="h5" className={classes.title}>
-                            Virus . Net
+                            WWV
                         </Typography>
                     </Toolbar>
                 </AppBar>

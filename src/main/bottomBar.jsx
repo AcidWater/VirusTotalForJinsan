@@ -20,8 +20,13 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Ubuntu"
     },
 
-    linkTo: {
-        
+    changeBar: {
+        position: "fixed",
+        margin: 0,
+        right: 20,
+        bottom: 20,
+        left: "auto",
+        top: "auto"
     }
 }));
 
@@ -31,6 +36,11 @@ function SlideTransition(props) {
 
 export default function bottomBar() {
     const classes = useStyles();
+    const [alignment, setAlignment] = React.useState('left');
+
+    const handleAlignment = (event, newAlignment) => {
+        setAlignment(newAlignment);
+    };
 
     const [state, setState] = React.useState({
         open: false,
@@ -65,7 +75,20 @@ export default function bottomBar() {
                 key={state.Transition.name}
             />
 
-            <ToggleButtonGroup exclusive aria-label
+            <ToggleButtonGroup 
+                value={alignment}
+                exclusive
+                onChange={handleAlignment}
+                aria-label="Change Virus"
+                className={classes.changeBar}
+            >
+                <ToggleButton value="left" aria-label="COVID-19">
+                    <Typography>COVID-19</Typography>
+                </ToggleButton>
+                <ToggleButton value="right" aria-label="Flu" disabled>
+                    <Typography>Flu</Typography>
+                </ToggleButton>
+            </ToggleButtonGroup>
         </div>
     )
 }
