@@ -1,5 +1,5 @@
 # WorldWideVirus
-* Needs yarn
+* Need yarn
 
 
 Just install and enjoy
