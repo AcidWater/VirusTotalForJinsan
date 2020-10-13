@@ -1,2 +1,5 @@
-# WWV
- Just install and enjoy
+# WorldWideVirus
+* Needs yarn
+
+
+Just install and enjoy
