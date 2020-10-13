@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable-next-line jsx-a11y/accessible-emoji */
 import React from 'react';
-import { Fab, makeStyles, Snackbar, Slide, Fade } from '@material-ui/core'
+import { Link, Fab, makeStyles, Snackbar, Slide, Fade, Typography } from '@material-ui/core'
+import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { Favorite } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
 
     inform: {
         fontFamily: "Ubuntu"
+    },
+
+    linkTo: {
+        
     }
 }));
 
@@ -54,9 +61,11 @@ export default function bottomBar() {
                 open={state.open}
                 onClose={handleClose}
                 TransitionComponent={state.Transition}
-                message="💻 GitHub"
+                message={<Typography>Made by Guno Kim | <Link color="inherit" href="https://github.com/AcidWater/VirusTotalForJinsan">💻 GitHub</Link></Typography>}
                 key={state.Transition.name}
             />
+
+            <ToggleButtonGroup exclusive aria-label
         </div>
     )
 }

@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+import geoUrl from "../json/regions_kr.json"
+import commaNumber from 'comma-number'
 
 import {
   ZoomableGroup,
@@ -6,19 +8,6 @@ import {
   Geographies,
   Geography
 } from 'react-simple-maps'
-
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-const rounded = num => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + 'Bn';
-  } else if (num / 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-}
 
 const MapChart = ({ setTooltipContent }) => {
   return (
@@ -32,8 +21,8 @@ const MapChart = ({ setTooltipContent }) => {
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {
-                    const { NAME, POP_EST } = geo.properties;
-                    setTooltipContent(`${NAME} - ${rounded(POP_EST)}`);
+                    const { NAME, COVID_19 } = geo.properties;
+                    setTooltipContent(`${NAME} - ${commaNumber(COVID_19) + "명"}`);
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");
