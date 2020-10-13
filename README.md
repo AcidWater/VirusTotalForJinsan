@@ -1,2 +1,2 @@
-# Virus.Net
+# WWV
  Just install and enjoy
