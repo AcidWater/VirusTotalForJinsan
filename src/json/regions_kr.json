@@ -37100,7 +37100,7 @@
             "type": "Polygon",
             "properties": {
               "NAME": "대한민국",
-              "NAME_LONG": "Republic of Korea",
+              "NAME_LONG": "South Korea",
               "ABBREV": "S.K.",
               "FORMAL_EN": "Republic of Korea",
               "POP_EST": 51181299,
@@ -37602,7 +37602,7 @@
             "type": "Polygon",
             "properties": {
               "NAME": "미얀마",
-              "NAME_LONG": "Myanmar",
+              "NAME_LONG": "Burma",
               "ABBREV": "Myan.",
               "FORMAL_EN": "Republic of the Union of Myanmar",
               "POP_EST": 55123814,
@@ -38610,7 +38610,7 @@
             "type": "MultiPolygon",
             "properties": {
               "NAME": "러시아",
-              "NAME_LONG": "Russian Federation",
+              "NAME_LONG": "Russia",
               "ABBREV": "Rus.",
               "FORMAL_EN": "Russian Federation",
               "POP_EST": 142257519,
@@ -39637,7 +39637,7 @@
             "type": "MultiPolygon",
             "properties": {
               "NAME": "미국",
-              "NAME_LONG": "United States",
+              "NAME_LONG": "USA",
               "ABBREV": "U.S.A.",
               "FORMAL_EN": "United States of America",
               "POP_EST": 326625791,

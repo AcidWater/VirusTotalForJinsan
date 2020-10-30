@@ -1,6 +1,7 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import geoUrl from "../json/regions_kr.json"
 import commaNumber from 'comma-number'
+import axios from 'axios'
 
 import {
   ZoomableGroup,
@@ -21,8 +22,15 @@ const MapChart = ({ setTooltipContent }) => {
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {
-                    const { NAME, COVID_19 } = geo.properties;
-                    setTooltipContent(`${NAME} - ${commaNumber(COVID_19) + "명"}`);
+                    const { NAME, NAME_LONG } = geo.properties;
+                    axios.get(`https://covid19.mathdro.id/api/countries/${NAME_LONG}`)
+                      .then(res => {
+                        const country = res.data;
+                        setTooltipContent(`${NAME} - ${commaNumber(country.confirmed.value) + "명"}`);
+                      })
+                      .catch(err => {
+                        setTooltipContent(`${NAME} - 정보를 찾지 못했습니다.`);
+                      })
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");

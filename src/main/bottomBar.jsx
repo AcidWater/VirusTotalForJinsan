@@ -3,7 +3,6 @@
 /* eslint-disable-next-line jsx-a11y/accessible-emoji */
 import React from 'react';
 import { Link, Fab, makeStyles, Snackbar, Slide, Fade, Typography } from '@material-ui/core'
-import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { Favorite } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +26,16 @@ const useStyles = makeStyles((theme) => ({
         bottom: 20,
         left: "auto",
         top: "auto"
+    },
+
+    statusTypo:{
+        position: "fixed",
+        margin: 0,
+        bottom: 20,
+        top: "auto",
+        right: 20,
+        color: "gray",
+        userSelect: false,
     }
 }));
 
@@ -36,11 +45,6 @@ function SlideTransition(props) {
 
 export default function bottomBar() {
     const classes = useStyles();
-    const [alignment, setAlignment] = React.useState('left');
-
-    const handleAlignment = (event, newAlignment) => {
-        setAlignment(newAlignment);
-    };
 
     const [state, setState] = React.useState({
         open: false,
@@ -61,6 +65,12 @@ export default function bottomBar() {
         })
     }
 
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
     return (
         <div className={classes.newsBar}>
             <Fab color="primary" aria-label="add" onClick={handleClick(SlideTransition)}>
@@ -75,20 +85,7 @@ export default function bottomBar() {
                 key={state.Transition.name}
             />
 
-            <ToggleButtonGroup 
-                value={alignment}
-                exclusive
-                onChange={handleAlignment}
-                aria-label="Change Virus"
-                className={classes.changeBar}
-            >
-                <ToggleButton value="left" aria-label="COVID-19">
-                    <Typography>COVID-19</Typography>
-                </ToggleButton>
-                <ToggleButton value="right" aria-label="Flu" disabled>
-                    <Typography>Flu</Typography>
-                </ToggleButton>
-            </ToggleButtonGroup>
+            <Typography className={classes.statusTypo}>{year}-{month}-{date} 기준 전 세계 코로나-19 바이러스 현황</Typography>
         </div>
     )
 }
