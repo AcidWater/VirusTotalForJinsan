@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo }from "react";
 import geoUrl from "../json/regions_kr.json"
 import commaNumber from 'comma-number'
 import axios from 'axios'
